@@ -18,7 +18,7 @@ namespace Reader_Express
         public static List<int> arrbox = new List<int>();
         public int box;
         int x, y;
-
+        public int position;
         int width, height;
         private const int DISROW = 120;
         private const int DISCOL = 120;
@@ -32,9 +32,9 @@ namespace Reader_Express
         public Map()
         {
             InitializeComponent();
-            g = panel1.CreateGraphics();
-            width = panel1.Width;
-            height = panel1.Height;
+            
+            //width = panel1.Width;
+            //height = panel1.Height;
             canPain = false;
             flag = false;
             flag1 = false;
@@ -74,15 +74,10 @@ namespace Reader_Express
             if (i == -1) MessageBox.Show("Error:Not found tag");
             else
             {
-                i = 10 - i;
-                string path = Directory.GetCurrentDirectory() + @"/nuclear1.gif";
-
-                //string path = @"Storage Card/Debug/nuclear.gif";
-                
-                Bitmap bmp = new Bitmap(path);
-                Image img = (Image)bmp;
-                Item item = new Item(((i % 3)) * START, ((i / 3)) * START, img);
-                item.drawImageItem(g);
+                position =i;
+               
+                panel1.Paint += new PaintEventHandler(panel1_init);
+                panel1.Refresh();
             }
         }
         public void getBox(int box)
@@ -98,41 +93,40 @@ namespace Reader_Express
             }
             else boxNum = 0;
         }
-        private Panel panel1 = new Panel();
+        //private Panel panel1 = new Panel();
         //g = panelMap.CreateGraphics();
-        private bool btnRectangleClicked = false;
+        //private bool btnRectangleClicked = false;
         private void btnRectangle_Click(object sender, EventArgs e)
         {
-            btnRectangleClicked = true;
-            panel1.Size = new Size(362, 370);
-            panel1.Location = new Point(111, 3);
-            panel1.BackColor = Color.White;
+            //btnRectangleClicked = true;
+            
+            
             panel1.Paint += new PaintEventHandler(panel1_Paint);
-            this.Controls.Add(panel1);
+            panel1.Refresh();
             //if (flag1)
             //{
-                
-            //    panelMap.Refresh();
-            //    for (int i = 0; i <= 360; i= i+ roomWidth)
+
+            //    panel1.Refresh();
+            //    for (int i = 0; i <= 360; i = i + roomWidth)
             //    {
             //        g.DrawLine(redPen, i, 0, i, 360);
             //    }
-            //    for (int i = 0; i <= 360; i= i+ roomHeight )
+            //    for (int i = 0; i <= 360; i = i + roomHeight)
             //    {
             //        g.DrawLine(redPen, 0, i, 360, i);
             //    }
             //    /*Font drawFont = new Font("Arial", 16);
             //    SolidBrush drawBrush = new SolidBrush(Color.Black);
-            //    // Create point for upper-left corner of drawing.
+            //     Create point for upper-left corner of drawing.
             //    PointF drawPoint = new PointF(10, 10);
             //    g.DrawString("1", drawFont, drawBrush, drawPoint);*/
             //    flag1 = false;
             //}
             //else
             //{
-            //    MessageBox.Show("Please, run setting", "Warning",MessageBoxButtons.RetryCancel,MessageBoxIcon.Asterisk,MessageBoxDefaultButton.Button2);
+            //    MessageBox.Show("Please, run setting", "Warning", MessageBoxButtons.RetryCancel, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2);
             //}
-            ////  MessageBox.Show(box.ToString());
+              //MessageBox.Show(box.ToString());
         }
 
         private void btnEclipse_Click(object sender, EventArgs e)
@@ -162,10 +156,12 @@ namespace Reader_Express
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            
             MainForm main = new MainForm();
            
             updateMap.Enabled = true;
             main.ProcessorMap();
+
         }
 
         private void btnSetting_Click(object sender, EventArgs e)
@@ -190,9 +186,9 @@ namespace Reader_Express
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            System.Drawing.Graphics g = e.Graphics;
-            if (btnRectangleClicked)
-            {
+            Graphics g = e.Graphics;
+
+            
                 for (int i = 0; i <= 360; i = i + roomWidth)
                 {
                     g.DrawLine(redPen, i, 0, i, 360);
@@ -201,8 +197,20 @@ namespace Reader_Express
                 {
                     g.DrawLine(redPen, 0, i, 360, i);
                 }
-                btnRectangleClicked = false;
-            }
+                
+            
+        }
+        
+        private void panel1_init(object sender, PaintEventArgs e)
+        {
+            g = e.Graphics;
+           string path = @"/Storage Card/Debug/nuclear1.jpg";
+           //string path = Directory.GetCurrentDirectory() + @"/nuclear1.jpg";
+           Bitmap bmp = new Bitmap(path);
+           Image img = (Image)bmp;
+            //Item item = new Item(((9 - position) % 3) * START, ((position - 1) / 3) * START, img);
+            //item.drawImageItem(g);
+            g.DrawImage(img, (( position-1) % 3) * START, ((9-position) / 3) * START);
         }
     }
 }

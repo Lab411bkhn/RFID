@@ -7,8 +7,10 @@ namespace Reader_Express
 {
     class DatabaseXml
     {
-        string path_xml = Directory.GetCurrentDirectory() + @"/rfidreader.xml" ;// @"Storage Card/Debug/rfidreader.xml";
-        string path_xmlData = Directory.GetCurrentDirectory() + @"/rfidData.xml"; // @"Storage Card/Debug/rfidData.xml";
+        //string path_xml = Directory.GetCurrentDirectory() + @"/rfidreader.xml" ;
+        string path_xml =@"/Storage Card/Debug/rfidreader.xml";
+        //string path_xmlData = Directory.GetCurrentDirectory() + @"/rfidData.xml";
+         string path_xmlData = @"/Storage Card/Debug/rfidData.xml";
         public XmlDocument xml = new XmlDocument();
         public XmlDocument xml_Data = new XmlDocument();
         public XmlNode training;

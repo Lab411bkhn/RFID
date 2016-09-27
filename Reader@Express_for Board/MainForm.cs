@@ -1030,7 +1030,7 @@ namespace Reader_Express
         //}
             
         
-            box = 1;
+           
             //diffRssi = new List<double>();
             //for (int i = 0; i < dataRssi.Count; i++)
             //{
@@ -1100,7 +1100,8 @@ namespace Reader_Express
             //    }
             //    box = findMin(diffRssi);
             //}
-            SendBox(box);
+        box = 4;
+        SendBox(box);
         totalReadCounts1 = 0;
         totalReadCounts2 = totalReadCounts3 = totalReadCounts4 = 0;
         rssi1_ = rssi2_ = rssi3_ = rssi4_ = 0;

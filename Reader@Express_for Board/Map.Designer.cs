@@ -37,6 +37,7 @@
             this.btnEclipse = new System.Windows.Forms.Button();
             this.btnRectangle = new System.Windows.Forms.Button();
             this.chbRaw = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnMap.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +132,12 @@
             this.chbRaw.TabIndex = 2;
             this.chbRaw.Text = "Raw";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(114, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(387, 370);
+            // 
             // Map
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -138,6 +145,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(504, 387);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnMap);
             this.Name = "Map";
             this.Text = "Map";
@@ -157,5 +165,6 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnEclipse;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Panel panel1;
     }
 }
