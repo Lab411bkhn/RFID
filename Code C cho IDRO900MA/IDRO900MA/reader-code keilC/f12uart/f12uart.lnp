@@ -1,0 +1,16 @@
+--cpu Cortex-M3
+".\main.o"
+".\user.o"
+".\delay.o"
+".\stm32f10x_it.o"
+".\misc.o"
+".\startup_stm32f10x_md.o"
+".\system_stm32f10x.o"
+".\stm32f10x_gpio.o"
+".\stm32f10x_rcc.o"
+".\stm32f10x_usart.o"
+".\gpio_stm32f10x.o"
+--library_type=microlib --strict --scatter ".\f12uart.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\f12uart.map" -o .\f12uart.axf
