@@ -7,12 +7,17 @@ namespace Reader_Express
 {
     class DatabaseXml
     {
-        //string path_xml = Directory.GetCurrentDirectory() + @"/rfidreader.xml" ;
-        string path_xml =@"/Storage Card/Debug/rfidreader.xml";
-        //string path_xmlData = Directory.GetCurrentDirectory() + @"/rfidData.xml";
-         string path_xmlData = @"/Storage Card/Debug/rfidData.xml";
+        string path_xml = Directory.GetCurrentDirectory() + @"/rfidreader.xml" ;
+        //string path_xml =@"/Storage Card/Debug/rfidreader.xml";
+        string path_xmlData = Directory.GetCurrentDirectory() + @"/rfidData.xml";
+        // string path_xmlData = @"/Storage Card/Debug/rfidData.xml";
+        string path_history = Directory.GetCurrentDirectory() + @"/history.xml";
+        // string path_history = @"/Storage Card/Debug/History.xml";
         public XmlDocument xml = new XmlDocument();
         public XmlDocument xml_Data = new XmlDocument();
+        public XmlDocument xml_History = new XmlDocument();
+
+        public XmlNode history;
         public XmlNode training;
         public XmlNode rfidNode;
 
@@ -24,6 +29,8 @@ namespace Reader_Express
                 training = xml.SelectSingleNode("//root/training");
                 xml_Data.Load(path_xmlData);
                 rfidNode = xml_Data.SelectSingleNode("//root/rfidNode");
+                xml_History.Load(path_history);
+                history = xml_History.SelectSingleNode("//root/history");
             }
             catch
             {
@@ -33,13 +40,19 @@ namespace Reader_Express
 
         public int GetTotalCard()
         {
-            return Convert.ToInt32(rfidNode.Attributes[0].Value);
+             int totalCard = Convert.ToInt32(rfidNode.Attributes[0].Value);
+             return totalCard;
         }
         public int GetTotalTraining()
         {
-            return Convert.ToInt32(training.Attributes[0].Value);
+           int totalTraining = Convert.ToInt32(training.Attributes[0].Value);
+           return totalTraining;
         }
-
+        public int GetTotalHistory()
+        {
+            int historyIndex = Convert.ToInt32(history.Attributes[0].Value);
+            return historyIndex;
+        }
         #region ...................................Training......................................................
         /// <summary>
         /// Lay gia tri rssi[index] cua the tagid
@@ -58,20 +71,20 @@ namespace Reader_Express
             catch { return "Empty"; } 
         }
         /// <summary>
-        /// Lay vi tri the ung voi Id
+        
         /// </summary>
         /// <param name="cardId"></param>
         /// <returns></returns>
-        public string getPosition(int cardId)
-        {
-            try
-            {
-                XmlElement element = xml.DocumentElement;
-                XmlNode myxmlnode = element.SelectSingleNode("//root/training/card[@id='" + cardId.ToString() + "']");
-                return myxmlnode.Attributes[1].Value;
-            }
-            catch { return "Empty"; }
-        }
+        //public string getPosition(int cardId)
+        //{
+        //    try
+        //    {
+        //        XmlElement element = xml.DocumentElement;
+        //        XmlNode myxmlnode = element.SelectSingleNode("//root/training/card[@id='" + cardId.ToString() + "']");
+        //        return myxmlnode.Attributes[1].Value;
+        //    }
+        //    catch { return "Empty"; }
+        //}
 
         //creat CardID information 
         public void creatCard(int _tagId, object _rssi1, object _rssi2, object _rssi3, object _rssi4)
@@ -275,5 +288,58 @@ namespace Reader_Express
             }
         }
         #endregion ...................................Data Rfid.....................................................
+        #region ......................................History.......................................................
+       
+        public void CreatHistory(int index, int position, string date)
+        {
+            try
+            {
+                XmlElement element = xml_History.DocumentElement;
+                XmlNode myxmlnode = element.SelectSingleNode("//root/history/card[@id='" + index.ToString() + "']");
+                myxmlnode.Attributes["position"].Value = position.ToString();
+                myxmlnode.Attributes["datetime"].Value = date;
+            }
+            catch
+            {
+                int total_card = Convert.ToInt32(history.Attributes[0].Value);
+                XmlNode node_card = xml_History.CreateElement("card");
+
+                XmlAttribute id = xml_History.CreateAttribute("id");
+                id.Value = index.ToString();
+                node_card.Attributes.Append(id);
+
+                XmlAttribute posi = xml_History.CreateAttribute("position");
+                posi.Value = position.ToString();
+                node_card.Attributes.Append(posi);
+
+                XmlAttribute datetime = xml_History.CreateAttribute("datetime");
+                datetime.Value = date;
+                node_card.Attributes.Append(datetime);
+
+                history.AppendChild(node_card);
+
+                total_card++;
+                history.Attributes[0].Value = total_card.ToString();
+            }
+            finally
+            {
+                xml_History.Save(path_history);
+            }
+        }
+        public string getPosition(int cardId)
+        {
+            try
+            {
+                XmlElement element = xml_History.DocumentElement;
+                XmlNode myxmlnode = element.SelectSingleNode("//root/history/card[@id='" + cardId.ToString() + "']");
+                return myxmlnode.Attributes[1].Value;
+            }
+            catch 
+            { 
+                return "Empty";
+            }
+        }
+        
+        #endregion
     }
 }

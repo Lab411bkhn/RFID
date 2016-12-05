@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayProcess.cs" />
     <Compile Include="cell.cs">
       <SubType>Form</SubType>
     </Compile>

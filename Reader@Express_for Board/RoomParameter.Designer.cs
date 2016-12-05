@@ -52,6 +52,8 @@
             // 
             // chb2D
             // 
+            this.chb2D.Checked = true;
+            this.chb2D.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chb2D.Location = new System.Drawing.Point(24, 24);
             this.chb2D.Name = "chb2D";
             this.chb2D.Size = new System.Drawing.Size(56, 20);

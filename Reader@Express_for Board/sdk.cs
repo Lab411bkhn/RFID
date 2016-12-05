@@ -372,5 +372,30 @@ namespace Reader_Express
             else co = 1;
             return co;
         }
+        
+        //public static int locate(int x1, int x2, int x3, int x4)
+        //{
+        //    int pos;
+        //    if ((x1 == 50) && (x2 == 50) && (x3 == 50) && (x4 == 50)) pos = 0;
+        //    else
+        //        if ((x1 < 20)) pos = 1;
+        //        else
+        //            if ((x2 < 20)) pos = 7;
+        //            else
+        //                if ((x3 < 20)) pos = 9;
+        //                else
+        //                    if ((x4 < 20)) pos = 3;
+        //                    else
+        //                        if ((x1 < x3) && (x1 < x4) && (x2 < x3) && (x2 < x4)) pos = 4;
+        //                        else
+        //                            if ((x2 < x1) && (x2 < x4) && (x3 < x1) && (x3 < x4)) pos = 8;
+        //                            else
+        //                                if ((x3 < x1) && (x3 < x2) && (x4 < x1) && (x4 < x2)) pos = 6;
+        //                                else
+        //                                    if ((x1 < x3) && (x1 < x2) && (x4 < x3) && (x4 < x2)) pos = 2;
+        //                                    else
+        //                                        pos = 5;
+        //    return pos;
+        //}
     }
 }

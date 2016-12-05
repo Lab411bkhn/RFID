@@ -10,7 +10,8 @@ namespace Reader_Express
 {
     class WebForm
     {
-        public Thread threadSendToWeb = null;
+        public Thread threadProcessWeb = null;
+        
         
         public void ProcessDataSend(int position, string MaThe)
         {
@@ -62,7 +63,7 @@ namespace Reader_Express
                 else month = monthI.ToString();
                 dataSend = dataSend + MaThe + "&Location=" + position.ToString() + "&NgayTao=" + year + "-" + month + "-" + day + "%20" + hour + ":" + min + ":" + second;
                 url = url + dataSend + "&Code=bkradRFID";
-                MessageBox.Show(url);
+                //MessageBox.Show(url);
                 //MainForm.DisplayData(tbShow, "Sended Data:" + dataSend);
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = "GET";
@@ -81,7 +82,7 @@ namespace Reader_Express
                 
                 responseStream = new StreamReader(webResponse.GetResponseStream());
                 webResponseStream = responseStream.ReadToEnd();
-                MessageBox.Show("Response from web: " + webResponseStream);
+                //MessageBox.Show("Response from web: " + webResponseStream);
                 //close webresponse
                 webResponse.Close();
                 responseStream.Close();

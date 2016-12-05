@@ -38,6 +38,7 @@
             this.btnRectangle = new System.Windows.Forms.Button();
             this.chbRaw = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.statusBar1 = new System.Windows.Forms.StatusBar();
             this.pnMap.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             // pnMap
             // 
             this.pnMap.BackColor = System.Drawing.Color.PowderBlue;
+            this.pnMap.Controls.Add(this.statusBar1);
             this.pnMap.Controls.Add(this.btnClear);
             this.pnMap.Controls.Add(this.btnSetting);
             this.pnMap.Controls.Add(this.btnStart);
@@ -112,7 +114,7 @@
             this.btnEclipse.Size = new System.Drawing.Size(99, 25);
             this.btnEclipse.TabIndex = 2;
             this.btnEclipse.Text = "Eclipse";
-            this.btnEclipse.Click += new System.EventHandler(this.btnEclipse_Click);
+            //this.btnEclipse.Click += new System.EventHandler(this.btnEclipse_Click);
             // 
             // btnRectangle
             // 
@@ -137,6 +139,14 @@
             this.panel1.Location = new System.Drawing.Point(114, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(387, 370);
+            // 
+            // statusBar1
+            // 
+            this.statusBar1.Location = new System.Drawing.Point(0, 346);
+            this.statusBar1.Name = "statusBar1";
+            this.statusBar1.Size = new System.Drawing.Size(105, 24);
+            this.statusBar1.Text = "stbWait";
+            this.statusBar1.ParentChanged += new System.EventHandler(this.statusBar1_ParentChanged);
             // 
             // Map
             // 
@@ -166,5 +176,6 @@
         private System.Windows.Forms.Button btnEclipse;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.StatusBar statusBar1;
     }
 }

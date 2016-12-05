@@ -81,10 +81,15 @@
             this.btnClearDataBase = new System.Windows.Forms.Button();
             this.btnDataStore = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnConfiguration = new System.Windows.Forms.Button();
+            this.btnSetUp = new System.Windows.Forms.Button();
             this.btnKill = new System.Windows.Forms.Button();
             this.tbShow = new System.Windows.Forms.TextBox();
             this.btnSendToWeb = new System.Windows.Forms.Button();
+            this.txbPw4 = new System.Windows.Forms.TextBox();
+            this.btnSet = new System.Windows.Forms.Button();
+            this.txbPw1 = new System.Windows.Forms.TextBox();
+            this.txbPw2 = new System.Windows.Forms.TextBox();
+            this.txbPw3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tbPosition3
@@ -261,7 +266,7 @@
             this.label6.Location = new System.Drawing.Point(683, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 20);
-            this.label6.Text = "Position";
+            this.label6.Text = "Power";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label5
@@ -536,15 +541,15 @@
             this.btnClear.Text = "Clear";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // btnConfiguration
+            // btnSetUp
             // 
-            this.btnConfiguration.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnConfiguration.Location = new System.Drawing.Point(3, 177);
-            this.btnConfiguration.Name = "btnConfiguration";
-            this.btnConfiguration.Size = new System.Drawing.Size(120, 18);
-            this.btnConfiguration.TabIndex = 131;
-            this.btnConfiguration.Text = "Configurations";
-            this.btnConfiguration.Click += new System.EventHandler(this.btnConfiguration_Click);
+            this.btnSetUp.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnSetUp.Location = new System.Drawing.Point(3, 177);
+            this.btnSetUp.Name = "btnSetUp";
+            this.btnSetUp.Size = new System.Drawing.Size(120, 18);
+            this.btnSetUp.TabIndex = 131;
+            this.btnSetUp.Text = "SetUpForMapping";
+            this.btnSetUp.Click += new System.EventHandler(this.btnConfiguration_Click);
             // 
             // btnKill
             // 
@@ -575,12 +580,54 @@
             this.btnSendToWeb.Text = "Send To Web";
             this.btnSendToWeb.Click += new System.EventHandler(this.btnSendToWeb_Click);
             // 
+            // txbPw4
+            // 
+            this.txbPw4.Location = new System.Drawing.Point(624, 414);
+            this.txbPw4.Name = "txbPw4";
+            this.txbPw4.Size = new System.Drawing.Size(108, 23);
+            this.txbPw4.TabIndex = 167;
+            // 
+            // btnSet
+            // 
+            this.btnSet.Location = new System.Drawing.Point(137, 417);
+            this.btnSet.Name = "btnSet";
+            this.btnSet.Size = new System.Drawing.Size(72, 20);
+            this.btnSet.TabIndex = 168;
+            this.btnSet.Text = "Set";
+            this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
+            // 
+            // txbPw1
+            // 
+            this.txbPw1.Location = new System.Drawing.Point(243, 414);
+            this.txbPw1.Name = "txbPw1";
+            this.txbPw1.Size = new System.Drawing.Size(108, 23);
+            this.txbPw1.TabIndex = 177;
+            // 
+            // txbPw2
+            // 
+            this.txbPw2.Location = new System.Drawing.Point(367, 414);
+            this.txbPw2.Name = "txbPw2";
+            this.txbPw2.Size = new System.Drawing.Size(108, 23);
+            this.txbPw2.TabIndex = 178;
+            // 
+            // txbPw3
+            // 
+            this.txbPw3.Location = new System.Drawing.Point(495, 414);
+            this.txbPw3.Name = "txbPw3";
+            this.txbPw3.Size = new System.Drawing.Size(108, 23);
+            this.txbPw3.TabIndex = 179;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(799, 473);
+            this.Controls.Add(this.txbPw3);
+            this.Controls.Add(this.txbPw2);
+            this.Controls.Add(this.txbPw1);
+            this.Controls.Add(this.btnSet);
+            this.Controls.Add(this.txbPw4);
             this.Controls.Add(this.btnSendToWeb);
             this.Controls.Add(this.tbShow);
             this.Controls.Add(this.stbConnect);
@@ -593,7 +640,7 @@
             this.Controls.Add(this.btnClearDataBase);
             this.Controls.Add(this.btnDataStore);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnConfiguration);
+            this.Controls.Add(this.btnSetUp);
             this.Controls.Add(this.btnKill);
             this.Controls.Add(this.tbPosition3);
             this.Controls.Add(this.tbPosition2);
@@ -699,10 +746,15 @@
         private System.Windows.Forms.Button btnClearDataBase;
         private System.Windows.Forms.Button btnDataStore;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnConfiguration;
+        private System.Windows.Forms.Button btnSetUp;
         private System.Windows.Forms.Button btnKill;
         private System.Windows.Forms.TextBox tbShow;
         private System.Windows.Forms.Button btnSendToWeb;
+        private System.Windows.Forms.TextBox txbPw4;
+        private System.Windows.Forms.Button btnSet;
+        private System.Windows.Forms.TextBox txbPw1;
+        private System.Windows.Forms.TextBox txbPw2;
+        private System.Windows.Forms.TextBox txbPw3;
     }
 }
 
